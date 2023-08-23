@@ -7,6 +7,8 @@ RUN apt-get install -y make
 
 FROM base AS builder
 
+ARG MAKE_ARGS="-j4"
+
 WORKDIR /
 
 # Install Build Deps
@@ -27,7 +29,7 @@ RUN ./configure --disable-gui --disable-java --disable-readline \
     --disable-install-build-logs --without-x
 
 # Build
-RUN make
+RUN make ${MAKE_ARGS}
 
 # Final runtime image
 FROM builder AS dist
