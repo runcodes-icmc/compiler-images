@@ -7,6 +7,10 @@ build-base:
 build-%:
 	docker build -t ${IMAGE_PREFIX}-$*:latest -f ./$*/Dockerfile ./$* --no-cache
 
-all: build-base build-c build-cpp build-fortran build-go build-haskell build-java build-pascal build-portugol build-python build-r build-rust
+build-cached-%:
+	docker build -t ${IMAGE_PREFIX}-$*:latest -f ./$*/Dockerfile ./$*
+
+
+all: build-base build-c build-cpp build-fortran build-go build-haskell build-java build-pascal build-portugol build-python build-r build-rust build-octave
 
 .PHONY: all
