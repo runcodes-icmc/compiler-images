@@ -19,9 +19,10 @@ RUN apt-get install -y \
     zlib1g-dev
 
 # Download and build Octave from source
-RUN curl -L https://ftp.gnu.org/gnu/octave/octave-4.2.1.tar.xz | tar xJf -
-RUN mv octave-4.2.1 octave
+RUN curl -L https://ftp.gnu.org/gnu/octave/octave-8.3.0.tar.xz | tar xJf -
+RUN mv octave-8.3.0 octave
 WORKDIR /octave
+
 
 # Prepare build
 RUN ./configure --disable-gui --disable-java --disable-readline \
@@ -46,8 +47,6 @@ RUN cd /octave && make install && make clean
 # Clean Up
 RUN cd / && rm -rf /octave
 
-# Octave config
-COPY octaverc /usr/local/share/octave/site/m/startup/octaverc
 # Load script
 COPY ./octave-script.sh /tmp/script.sh
 RUN cat /tmp/script.sh >> /usr/bin/runcodes
