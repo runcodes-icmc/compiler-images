@@ -1,1 +1,0 @@
-docker build -t ghcr.io/runcodes-icmc/compiler-images-octave:latest -f ./octave/Dockerfile ./octave --build-arg="MAKE_ARGS=-j24"
