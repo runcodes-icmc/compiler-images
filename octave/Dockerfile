@@ -19,9 +19,12 @@ RUN apt-get install -y \
     zlib1g-dev
 
 # Download and build Octave from source
-RUN curl -L https://ftp.gnu.org/gnu/octave/octave-4.2.1.tar.xz | tar xJf -
-RUN mv octave-4.2.1 octave
+RUN curl -L https://ftp.gnu.org/gnu/octave/octave-4.4.1.tar.xz | tar xJf -
+RUN mv octave-4.4.1 octave
 WORKDIR /octave
+
+# Use C++ 11
+ENV CXXFLAGS="-std=c++11"
 
 # Prepare build
 RUN ./configure --disable-gui --disable-java --disable-readline \
