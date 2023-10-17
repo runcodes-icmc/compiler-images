@@ -58,6 +58,7 @@ jobs:
         image:
           - c
           - cpp
+          - dotnet
           - fortran
           - go
           - haskell
