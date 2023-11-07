@@ -66,6 +66,7 @@ jobs:
           - octave
           - pascal
           - portugol
+          - prolog
           - python
           - r
           - rust
