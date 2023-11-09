@@ -63,13 +63,13 @@ jobs:
           - go
           - haskell
           - java
+          - lua
           - octave
           - pascal
           - portugol
           - python
           - r
           - rust
-          - lua
 
     runs-on: ubuntu-latest
     steps:
