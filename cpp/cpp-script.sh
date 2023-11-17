@@ -1,6 +1,6 @@
 if [ ! -f src/?akefile ]
 then
-    compilation_command="g++ -std=c++latest ${src_file} -o ${user_bin} -w -O2 -lm"
+    compilation_command="g++ -std=c++20 ${src_file} -o ${user_bin} -w -O2 -lm"
     run_command="./${user_bin}"
 fi
 
