@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-jdk-jammy
+FROM eclipse-temurin:17-jdk-jammy
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor

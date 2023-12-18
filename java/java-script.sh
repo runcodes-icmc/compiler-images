@@ -1,6 +1,7 @@
 if [ ! -f src/?akefile ]
 then
-    compilation_command="javac -g ${src_file}"
+    cp "./src/${src_file}" ./src/Main.java
+    compilation_command="javac -g Main.java"
     run_command="java Main"
 fi
 
