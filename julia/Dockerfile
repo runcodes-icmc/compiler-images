@@ -10,8 +10,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -y make
 
 
-# (Optional) Install additional Julia packages
-# RUN julia -e 'using Pkg; Pkg.add("Plots")'  # Add "Plots" package
+# Install additional Julia packages (not working for now, FIX after getting julia to work)
+# RUN julia -e 'using Pkg; Pkg.add("Plots")'  
 
 # Clean Up
 RUN apt-get clean && \
