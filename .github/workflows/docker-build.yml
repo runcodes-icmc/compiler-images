@@ -63,6 +63,7 @@ jobs:
           - go
           - haskell
           - java
+          - julia
           - lua
           - octave
           - pascal
