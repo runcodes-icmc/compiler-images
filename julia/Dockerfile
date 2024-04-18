@@ -1,4 +1,4 @@
-FROM julia:latest
+FROM julia:1.10-bookworm
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
@@ -24,4 +24,4 @@ RUN rm /tmp/script.sh
 
 WORKDIR /root
 
-CMD ["/usr/bin/runcodes"]  # Use CMD with a list for shell arguments
+CMD ["/usr/bin/runcodes"]
