@@ -8,7 +8,7 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 # Load script
-COPY ./cpp-script.sh /tmp/script.sh
+COPY ./cpp-omp-mpi-script.sh /tmp/script.sh
 RUN cat /tmp/script.sh >> /usr/bin/runcodes
 RUN rm /tmp/script.sh
 

@@ -71,6 +71,11 @@ jobs:
           - python
           - r
           - rust
+          - c-omp
+          - c-omp-mpi
+          - cpp-omp
+          - cpp-omp-mpi
+          - prolog
 
     runs-on: ubuntu-latest
     steps:
