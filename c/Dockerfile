@@ -1,7 +1,7 @@
 FROM ghcr.io/runcodes-icmc/compiler-images-base:latest
 
 # Install language-specific dependencies
-RUN apt-get install -y gcc g++ make openmpi-bin
+RUN apt-get install -y gcc g++ make openmpi-bin libopenmpi-dev
 
 # Clean Up
 RUN apt-get clean
