@@ -1,6 +1,6 @@
 if [ ! -f src/?akefile ]; then
   compilation_command="mpic++ -std=c++17 ${src_file} -o ${user_bin} -w -O2 -lm -fopenmp"
-  run_command="mpirun -n 4 ./${user_bin}"
+  run_command="mpirun --oversubscribe -n 4 ./${user_bin}"
 fi
 
 export OMPI_ALLOW_RUN_AS_ROOT=1
