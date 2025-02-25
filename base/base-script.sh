@@ -17,6 +17,7 @@ monitor_max_fs=5242880   # 5MB
 monitor_max_ms=268435456 #256MB
 compilation_timeout=10
 src_file=''
+make_file=false
 [[ -e ${container_config_file} ]] && source ${container_config_file}
 
 # Messages sent for notifying of current status
@@ -34,9 +35,9 @@ compile() {
 
     # Save working dir to return to it later
     wd=$(pwd)
-    cd src
+    cd src || exit
 
-    [ -z ${pre_compilation_command} ] || ${pre_compilation_command}
+    [ -z "${pre_compilation_command}" ] || ${pre_compilation_command}
 
     ${monitor_bin} -f ${monitor_max_fs} \
         -m ${monitor_max_ms} \
@@ -46,10 +47,10 @@ compile() {
         >../${compilation_monitor_output} \
         2>../${compilation_monitor_error}
 
-    [ -z ${post_compilation_command} ] || ${post_compilation_command}
+    [ -z "${post_compilation_command}" ] || ${post_compilation_command}
 
     # Back to original working dir
-    cd $wd
+    cd "$wd" || exit
 
     cp ${compilation_monitor_output} ${outputfiles_dir}
     cp ${compilation_monitor_error} ${outputfiles_dir}
@@ -71,35 +72,35 @@ run_tests() {
 
     while IFS= read -r -d '' test_dir; do
         test_id=${test_dir#./test_}
-        cp -rn src/* ${test_dir}
+        cp -rn src/* "${test_dir}"
 
-        cd ${test_dir}
+        cd "${test_dir}" || exit
 
         # This should have a value set in ${container_config_file}
         var=t_${test_id}
         [ -z "${!var}" ] && timeout=3 || timeout=${!var}
 
-        [ -z ${pre_run_command} ] || ${pre_run_command} ${test_id}
+        [ -z "${pre_run_command}" ] || ${pre_run_command} "${test_id}"
 
         # Save output files outside of the test dir
         ${monitor_bin} -f $monitor_max_fs \
             -m $monitor_max_ms \
-            -i ../${test_id}.in \
-            -o ../${test_id}.output \
-            -e ../${test_id}.error \
+            -i "../${test_id}.in" \
+            -o "../${test_id}.output" \
+            -e "../${test_id}.error" \
             -c "timeout --signal=SIGKILL ${timeout} ${run_command}" \
-            >../${test_id}.monitor_out \
-            2>../${test_id}.monitor_err
+            >"../${test_id}.monitor_out" \
+            2>"../${test_id}.monitor_err"
 
-        [ -z ${post_run_command} ] || ${post_run_command} ${test_id}
+        [ -z "${post_run_command}" ] || ${post_run_command} "${test_id}"
 
         # Back to original working dir
-        cd $wd
+        cd "$wd" || exit
 
-        cp ${test_id}.monitor_out ${outputfiles_dir}
-        cp ${test_id}.monitor_err ${outputfiles_dir}
-        cp ${test_id}.output ${outputfiles_dir}
-        cp ${test_id}.error ${outputfiles_dir}
+        cp "${test_id}.monitor_out" "${outputfiles_dir}"
+        cp "${test_id}.monitor_err" "${outputfiles_dir}"
+        cp "${test_id}.output" "${outputfiles_dir}"
+        cp "${test_id}.error" "${outputfiles_dir}"
     done < <(find . -maxdepth 1 -type d -name 'test_*' -print0)
 
     echo ${run_done_msg}
@@ -110,7 +111,11 @@ mkdir -p ${outputfiles_dir}
 
 # Standard commands for a Makefile-based submission. This can change depending
 # on the particular needs of each language.
-if [ -f src/?akefile ]; then
-    compilation_command='make all'
-    run_command='make -s run'
-fi
+for file in src/?akefile; do
+    if [ -f "$file" ]; then
+        make_file=true
+        compilation_command='make all'
+        run_command='make -s run'
+        break
+    fi
+done
