@@ -76,6 +76,7 @@ jobs:
           - cpp-omp
           - cpp-omp-mpi
           - prolog
+          - verilog
 
     runs-on: ubuntu-latest
     steps:
