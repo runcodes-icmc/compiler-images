@@ -1,4 +1,4 @@
-FROM python:3.11-bullseye
+FROM python:3.13.7-bookworm
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/runcodes /usr/bin/runcodes
@@ -13,7 +13,7 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 # Install PyPI packages
-RUN pip install --no-cache-dir numpy scipy imageio nltk scikit-image matplotlib
+RUN pip install --no-cache-dir numpy scipy imageio nltk scikit-image matplotlib pyscipopt
 
 # Load script
 COPY ./python-script.sh /tmp/script.sh
