@@ -1,4 +1,4 @@
-FROM golang:bullseye
+FROM golang:trixie
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
