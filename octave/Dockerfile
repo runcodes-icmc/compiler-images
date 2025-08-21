@@ -15,12 +15,12 @@ WORKDIR /
 RUN apt-get install -y \
     curl gcc g++ gfortran make texinfo xz-utils \
     libarpack2-dev libfftw3-dev libhdf5-dev liblapack-dev \
-    libopenblas-dev libpcre3-dev libqhull-dev libsuitesparse-dev \
+    libopenblas-dev libpcre3-dev libqhull-dev libsuitesparse-dev pkg-config\
     zlib1g-dev
 
 # Download and build Octave from source
-RUN curl -L https://ftp.gnu.org/gnu/octave/octave-8.3.0.tar.xz | tar xJf -
-RUN mv octave-8.3.0 octave
+RUN curl -L https://ftp.gnu.org/gnu/octave/octave-10.2.0.tar.xz | tar xJf -
+RUN mv octave-10.2.0 octave
 WORKDIR /octave
 
 
