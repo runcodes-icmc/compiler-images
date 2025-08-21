@@ -1,4 +1,4 @@
-FROM haskell:9.4-slim
+FROM haskell:9.12-slim-bookworm
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
