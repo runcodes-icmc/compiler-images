@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-jammy
+FROM eclipse-temurin:21-jdk-noble
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
@@ -8,7 +8,6 @@ COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/runcodes 
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y make
-
 # Clean Up
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
