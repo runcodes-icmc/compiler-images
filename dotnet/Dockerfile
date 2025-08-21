@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0-bookworm-slim
+FROM mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor

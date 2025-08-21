@@ -1,4 +1,4 @@
-FROM python:3.13.7-bookworm
+FROM python:3.13.7-slim-trixie
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/runcodes /usr/bin/runcodes
