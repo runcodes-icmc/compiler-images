@@ -72,7 +72,7 @@ run_tests() {
 
     while IFS= read -r -d '' test_dir; do
         test_id=${test_dir#./test_}
-        cp -rn src/* "${test_dir}"
+        cp -r --update=none src/* "${test_dir}"
 
         cd "${test_dir}" || exit
 
