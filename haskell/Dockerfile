@@ -1,4 +1,4 @@
-FROM haskell:9.12-slim-bookworm
+FROM ghcr.io/runcodes-icmc/compiler-images-base:latest
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
@@ -7,7 +7,7 @@ COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/runcodes 
 # System Upgrade
 RUN apt-get update -y
 RUN apt-get upgrade -y
-RUN apt-get install -y make
+RUN apt-get install -y make ghc
 
 # Clean Up
 RUN apt-get clean
