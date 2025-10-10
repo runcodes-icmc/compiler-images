@@ -1,5 +1,5 @@
 if [ ! -f src/?akefile ]; then
-    compilation_command="rustc ${src_file} -o ${user_bin}"
+    compilation_command="rustc -O ${src_file} -o ${user_bin}"
     run_command="./${user_bin}"
 fi
 
