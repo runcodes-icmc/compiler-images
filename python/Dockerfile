@@ -13,7 +13,7 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 # Install PyPI packages
-RUN pip install --no-cache-dir numpy scipy imageio nltk scikit-image matplotlib pyscipopt pymcdc
+RUN pip install --no-cache-dir numpy scipy imageio nltk scikit-image matplotlib pyscipopt pymcdc coverage
 
 # Load script
 COPY ./python-script.sh /tmp/script.sh
