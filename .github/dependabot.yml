@@ -12,7 +12,7 @@ updates:
 
   # --- DOCKER IMAGES ---
   - package-ecosystem: "docker"
-    directories: ["/backend/", "/frontend/"]
+    directories: ["*"]
     schedule:
       interval: "weekly"
     groups:
