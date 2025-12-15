@@ -1,4 +1,4 @@
-FROM julia:1.11-trixie
+FROM julia:1.12-trixie
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
