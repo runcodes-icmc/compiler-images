@@ -3,6 +3,10 @@ if [ ! -f src/?akefile ]; then
   run_command="./${user_bin}"
 fi
 
+monitor_max_fs=67108864
+monitor_max_ms=1073741824
+compilation_timeout=20
+
 compile "$compilation_command"
 
 # Bail if there are any compilation errors
