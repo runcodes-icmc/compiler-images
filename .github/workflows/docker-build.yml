@@ -78,6 +78,7 @@ jobs:
           - cpp-omp-mpi
           - prolog
           - verilog
+          - zig
 
     runs-on: ubuntu-latest
     steps:
