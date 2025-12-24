@@ -1,5 +1,5 @@
 if [ ! -f src/?akefile ]; then
-  compilation_command="mpic++ -std=c++17 ${src_file} -o ${user_bin} -w -O2 -lm -fopenmp"
+  compilation_command="mpic++ ${src_file} -o ${user_bin} -w -O2 -lm -fopenmp"
   run_command="mpirun --oversubscribe -n 4 ./${user_bin}"
 fi
 
