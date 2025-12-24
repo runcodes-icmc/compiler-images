@@ -1,4 +1,4 @@
-FROM ubuntu:25.04 as base
+FROM ubuntu:25.04 AS base
 
 # Load Monitor Binary
 COPY --from=ghcr.io/runcodes-icmc/compiler-monitor:latest /usr/bin/monitor /usr/bin/monitor
