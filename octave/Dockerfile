@@ -1,4 +1,4 @@
-FROM gnuoctave/octave:10.3.0
+FROM gnuoctave/octave:11.1.0
 
 # Load base executables
 COPY --from=ghcr.io/runcodes-icmc/compiler-images-base:latest /usr/bin/monitor /usr/bin/monitor
