@@ -1,16 +1,17 @@
-if [ ! -f src/?akefile ]; then
-    compilation_command="dotnet new console -o . && cp ${src_file} Program.cs && dotnet build"
-    run_command="dotnet run"
+if ! compgen -G "src/?akefile" >/dev/null; then
+    pre_compilation_command="dotnet new console -o . --force &>/dev/null && rm Program.cs"
+    compilation_command="dotnet build -c Release"
+    run_command="dotnet run -c Release"
 fi
 
-monitor_max_fs=67108864
-monitor_max_ms=1073741824
+monitor_max_fs=2684354560000
+monitor_max_ms=7516192768
 compilation_timeout=60
 
-compile "$compilation_command"
+compile "$compilation_command" "$pre_compilation_command"
 
 # Bail if there are any compilation errors
-if [ -s ${compilation_error} ]; then
+if [ -s "${compilation_error}" ]; then
     exit 1
 fi
 
