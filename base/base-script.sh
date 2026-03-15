@@ -111,7 +111,7 @@ mkdir -p "${outputfiles_dir}"
 
 # Standard commands for a Makefile-based submission. This can change depending
 # on the particular needs of each language.
-if ! compgen -G "src/?akefile" >/dev/null; then
+if compgen -G "src/?akefile" >/dev/null; then
     make_file=true
     compilation_command='make all'
     run_command='make -s run'

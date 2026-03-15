@@ -1,4 +1,4 @@
-FROM ubuntu:26.04 AS base
+FROM debian:trixie-slim AS base
 
 # Load Monitor Binary
 COPY --from=ghcr.io/runcodes-icmc/compiler-monitor:latest /usr/bin/monitor /usr/bin/monitor
