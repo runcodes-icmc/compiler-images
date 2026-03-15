@@ -4,6 +4,9 @@ if ! compgen -G "src/?akefile" >/dev/null; then
     run_command="java Main"
 fi
 
+# FIXME: Overriding settings
+monitor_max_ms=0 # no memory limit
+
 compile "$compilation_command"
 
 # Bail if there are any compilation errors
