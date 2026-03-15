@@ -1,4 +1,4 @@
-if [ ! -f src/?akefile ]; then
+if ! compgen -G "src/?akefile" >/dev/null; then
     compilation_command=""
     run_command="octave-cli -H -W -q ${src_file}"
 fi

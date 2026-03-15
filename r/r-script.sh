@@ -1,8 +1,8 @@
 # NOTE: no support for Makefile
 
 make_src() {
-    cat /bin/run_codes_functions.r ${src_file} > /tmp/src.r
-    mv /tmp/src.r > ${src_file}
+    cat /bin/run_codes_functions.r "${src_file}" >/tmp/src.r
+    mv /tmp/src.r >"${src_file}"
 }
 
 pre_run_commmand=make_src

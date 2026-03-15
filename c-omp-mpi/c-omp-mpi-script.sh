@@ -1,4 +1,4 @@
-if [ ! -f src/?akefile ]; then
+if ! compgen -G "src/?akefile" >/dev/null; then
   compilation_command="mpicc ${src_file} -o ${user_bin} -w -O2 -lm -fopenmp"
   run_command="mpirun --oversubscribe -n 4 ./${user_bin}"
 fi

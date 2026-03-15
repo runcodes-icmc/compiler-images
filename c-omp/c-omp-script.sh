@@ -1,4 +1,4 @@
-if [ ! -f src/?akefile ]; then
+if ! compgen -G "src/?akefile" >/dev/null; then
   compilation_command="gcc ${src_file} -o ${user_bin} -w -O2 -lm -fopenmp"
   run_command="./${user_bin}"
 fi

@@ -1,5 +1,4 @@
-if [ ! -f src/?akefile ]
-then
+if ! compgen -G "src/?akefile" >/dev/null; then
     compilation_command="gfortran ${src_file} -o ${user_bin} -Wall -lm"
     run_command="./${user_bin}"
 fi
@@ -7,8 +6,7 @@ fi
 compile "$compilation_command"
 
 # Bail if there are any compilation errors
-if [ -s ${compilation_error} ]
-then
+if [ -s "${compilation_error}" ]; then
     exit 1
 fi
 

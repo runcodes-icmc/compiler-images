@@ -5,8 +5,9 @@ if ! compgen -G "src/?akefile" >/dev/null; then
     run_command="./bin/Release/net10.0/src"
 fi
 
-monitor_max_fs=2684354560000
-monitor_max_ms=7516192768
+# FIXME: the problem isn't me, its microslop
+monitor_max_fs=0 # no memory or file limit
+monitor_max_ms=0
 compilation_timeout=60
 
 compile "${compilation_command}" "${pre_compilation_command}" "${post_compilation_command}"

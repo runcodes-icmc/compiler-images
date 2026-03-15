@@ -1,4 +1,4 @@
-if [ ! -f src/?akefile ]; then
+if ! compgen -G "src/?akefile" >/dev/null; then
     compilation_command="ghc ${src_file} -o ${user_bin}"
     run_command="./${user_bin}"
 fi
@@ -9,7 +9,7 @@ monitor_max_ms=1073741824
 compile "$compilation_command"
 
 # Bail if there are any compilation errors
-if [ -s ${compilation_error} ]; then
+if [ -s "${compilation_error}" ]; then
     exit 1
 fi
 

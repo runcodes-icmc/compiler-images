@@ -1,4 +1,4 @@
-if [ ! -f src/?akefile ]; then
+if ! compgen -G "src/?akefile" >/dev/null; then
     compilation_command="go build -o ${user_bin} ${src_file}"
     run_command="./${user_bin}"
 fi
@@ -10,7 +10,7 @@ compilation_timeout=60
 compile "$compilation_command"
 
 # Bail if there are any compilation errors
-if [ -s ${compilation_error} ]; then
+if [ -s "${compilation_error}" ]; then
     exit 1
 fi
 

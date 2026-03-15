@@ -1,5 +1,4 @@
-if [ ! -f src/?akefile ]
-then
+if ! compgen -G "src/?akefile" >/dev/null; then
     compilation_command=''
     run_command="julia ${src_file}"
 fi
