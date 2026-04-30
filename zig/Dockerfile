@@ -1,4 +1,4 @@
-FROM fedora:43
+FROM fedora:44
 # fedora <3
 
 # Load base executables
